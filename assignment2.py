@@ -17,5 +17,17 @@ modelFit = model.fit(x_train, y_train)
 
 predict = model.predict(x_test)
 acc = accuracy_score(y_test, predict)
-
+#Model accurate.
 print("Model accuracy is {}%.".format(acc*100))
+
+#import data
+TestData = pd.read_csv('https://github.com/dustywhite7/Econ8310/raw/master/AssignmentData/assignment3test.csv')
+xt = TestData.drop(columns=['id', 'DateTime'])
+xt = xt.reindex(columns=X.columns)
+
+#make predictions
+predTest = modelFit.predict(xt)
+preddf = pd.DataFrame(predTest, columns=["predict_meal"])
+preddf["predict_meal"] = preddf["predict_meal"].astype(int)
+
+print(preddf.value_counts())
