@@ -4,5 +4,5 @@ numpy
 ipynb
 numpy
 scipy
-sklearn
+scikit-learn
 xgboost
