@@ -19,11 +19,6 @@ x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random
 # 
 model = RandomForestClassifier(n_estimators=200, n_jobs=-1, random_state= 42, class_weight = "balanced")
 modelFit = model.fit(x_train,y_train)
-
-#Testing Test falid model
-scores = cross_val_score(model, X, Y, cv=5)
-print("Cross-validation scores:", scores)
-
 #
 predict = model.predict(x_test)
 acc = accuracy_score(y_test, predict)
