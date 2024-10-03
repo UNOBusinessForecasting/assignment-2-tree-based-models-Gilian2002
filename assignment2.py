@@ -17,3 +17,5 @@ modelFit = model.fit(x_train, y_train)
 
 predict = model.predict(x_test)
 acc = accuracy_score(y_test, predict)
+
+print("Model accuracy is {}%.".format(acc*100))
