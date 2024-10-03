@@ -6,6 +6,7 @@ from sklearn.metrics import accuracy_score, confusion_matrix
 
 # Import Data
 TrainData = pd.read_csv('https://github.com/dustywhite7/Econ8310/raw/master/AssignmentData/assignment3.csv')
+TrainData.head()
 
 # Split Data
 Y = TrainData['meal']
