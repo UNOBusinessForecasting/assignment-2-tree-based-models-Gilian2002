@@ -3,12 +3,13 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier 
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
+from sklearn.model_selection import cross_val_score
 
 
 # Import Data
 TrainData = pd.read_csv('https://github.com/dustywhite7/Econ8310/raw/master/AssignmentData/assignment3.csv')
 TrainData.head()
-print(TrainData.head)
+#print(TrainData.head)
 
 
 Y = TrainData['meal'] 
@@ -16,10 +17,20 @@ X = TrainData.drop(columns=['meal','id','DateTime'], axis=1)
 x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random_state=42)
 
 # 
-model = RandomForestClassifier(n_estimators=100, n_jobs=-1, random_state= 42, class_weight = "balanced")
+model = RandomForestClassifier(n_estimators=200, n_jobs=-1, random_state= 42, class_weight = "balanced")
 modelFit = model.fit(x_train,y_train)
-modelFit.summary()
-print(modelFit.summary())
+
+#Testing Test falid model
+scores = cross_val_score(model, X, Y, cv=5)
+print("Cross-validation scores:", scores)
+print("Average score:", scores.mean())
+print("Standard deviation:", scores.std())
+print("Model parameters:", modelFit.get_params())
+print("Classes:", modelFit.classes_)
+print("Number of classes:", modelFit.n_classes_)
+print("Number of features:", modelFit.n_features_in_)
+print("Feature importances:", modelFit.feature_importances_)
+
 
 #
 predict = model.predict(x_test)
