@@ -15,5 +15,5 @@ x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.33, random
 model = RandomForestClassifier(n_estimators=100, n_jobs=-1, random_state=42, class_weight="balanced")
 modelFit = model.fit(x_train, y_train)
 
-#test if get point
-print(modelFit)
+predict = model.predict(x_test)
+acc = accuracy_score(y_test, predict)
