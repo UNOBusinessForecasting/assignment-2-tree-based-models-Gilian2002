@@ -24,7 +24,17 @@ modelFit = model.fit(x_train,y_train)
 feature_scores = pd.Series(model.feature_importances_, index=x_train.columns).sort_values(ascending=False)
 print(feature_scores)
 
-#
+class testCases(unittest.TestCase):
+    def testValidModel(self):
+        modelType = str(type(model))
+        valid_model = False
+        for i in ['DecisionTreeClassifier', 'RandomForestClassifier', 'XGBClassifier', 'GradientBoostingClassifier']:
+            if i in modelType:
+                valid_model = True
+                break
+        self.assertTrue(valid_model, "Model type is not a valid classifier")
+This will ensure the test only passes if modelType matches one of the specified classifiers and provides a clear failure message otherwise.
+
 predict = model.predict(x_test)
 acc = accuracy_score(y_test, predict)
 
