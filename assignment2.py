@@ -7,10 +7,7 @@ from sklearn.metrics import accuracy_score
 # Import
 TrainData = pd.read_csv('https://github.com/dustywhite7/Econ8310/raw/master/AssignmentData/assignment3.csv')
 TrainData.head()
-print(TrainData.head)
 
-#
-from sklearn.model_selection import train_test_split
 
 Y = TrainData['meal']
 X = TrainData.drop(columns=['meal','id','DateTime'], axis=1)
@@ -18,7 +15,7 @@ x_train, x_test, y_train, y_test = train_test_split(X, Y, test_size=0.2, random_
 
 # Model
 
-model = RandomForestClassifier(n_estimators=100, random_state= 42, class_weight = "balanced")
+model = RandomForestClassifier(n_estimators=50, random_state= 42)
 modelFit = model.fit(x_train,y_train)
 
 # Pred.
@@ -32,7 +29,6 @@ TestData = pd.read_csv('https://github.com/dustywhite7/Econ8310/raw/master/Assig
 xt = TestData.drop(columns = ['meal','id','DateTime'], axis =1)
 pred = model.predict(xt)
 print(pred)
-
 
 # Predict Random forerst
 predTest2 = model.predict(xt) #model is linked from earlier
