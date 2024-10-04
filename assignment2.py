@@ -3,7 +3,8 @@ from sklearn.tree import DecisionTreeClassifier
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
-
+from sklearn.metrics import confusion_matrix
+import unittest
 
 # Import Data
 TrainData = pd.read_csv('https://github.com/dustywhite7/Econ8310/raw/master/AssignmentData/assignment3.csv')
@@ -33,7 +34,6 @@ class testCases(unittest.TestCase):
                 valid_model = True
                 break
         self.assertTrue(valid_model, "Model type is not a valid classifier")
-This will ensure the test only passes if modelType matches one of the specified classifiers and provides a clear failure message otherwise.
 
 predict = model.predict(x_test)
 acc = accuracy_score(y_test, predict)
@@ -62,8 +62,6 @@ pred2["predict_meal"] = pred2["predict_meal"].astype(int)
 
 print("\nRandom Forest Predictions on test data:")
 print(pred2.value_counts())
-
-from sklearn.metrics import confusion_matrix
 
 # Predict on the training data to get predictions of the same size as y_train
 pred_train = model.predict(x_train)
