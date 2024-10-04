@@ -21,7 +21,7 @@ from assignment2 import model, modelFit, pred
 
 def checkNumbers(series):
     for i in series:
-        if not isinstance(i, (float, int)):
+        if not isinstance(i, (float, int, np.int64, np.float64)):
             return False
     return True
 
