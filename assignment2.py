@@ -54,17 +54,6 @@ print("\nRandom Forest Predictions on test data:")
 print(pred2.value_counts())
 
 
-#Predict with decisison Tree
-predTest3 = DecisionTreeClassifier(max_depth=10, min_samples_leaf=10).fit(x_train,y_train).predict(xt)
-
-pred3 = pd.DataFrame(predTest3, columns=["predict_meal"])
-
-pred3["predict_meal"] = pred3["predict_meal"].astype(int)
-
-print("\nDecision Tree Predictions on test data:")
-print(pred3.value_counts())
-
-
 from sklearn.metrics import confusion_matrix
 
 # Predict on the training data to get predictions of the same size as y_train
