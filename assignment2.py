@@ -75,6 +75,5 @@ def test_model_accuracy(model, x_test, y_test):
     return accuracy_score(y_test, pred)
 
 rf_test_acc = test_model_accuracy(model, x_test, y_test)
-dt_test_acc = test_model_accuracy(DecisionTreeClassifier(max_depth=10, min_samples_leaf=10).fit(x_train,y_train), x_test, y_test)
 
 print(f"\nRandom Forest Test accuracy: {rf_test_acc * 100:.2f}%")
