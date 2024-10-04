@@ -53,7 +53,6 @@ pred2["predict_meal"] = pred2["predict_meal"].astype(int)
 print("\nRandom Forest Predictions on test data:")
 print(pred2.value_counts())
 
-
 from sklearn.metrics import confusion_matrix
 
 # Predict on the training data to get predictions of the same size as y_train
@@ -71,4 +70,3 @@ rf_test_acc = test_model_accuracy(model, x_test, y_test)
 dt_test_acc = test_model_accuracy(DecisionTreeClassifier(max_depth=10, min_samples_leaf=10).fit(x_train,y_train), x_test, y_test)
 
 print(f"\nRandom Forest Test accuracy: {rf_test_acc * 100:.2f}%")
-print(f"Decision Tree Test accuracy: {dt_test_acc * 100:.2f}%")
